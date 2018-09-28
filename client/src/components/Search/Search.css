@@ -1,0 +1,18 @@
+
+.Search > input[type=text] {
+  color: white;
+  background-color: rgb(95, 173, 91);  
+  border: none;
+  margin-right: 20px;
+  width: 400px;
+  padding: 10px;
+  border-radius: 4px;
+}
+.Search > input:hover {
+  background-color: rgb(136, 187, 133);  
+  border: none;
+}
+.Search > input[type=text]:focus {
+  background-color: white;  
+  color: rgb(131, 119, 119);
+}

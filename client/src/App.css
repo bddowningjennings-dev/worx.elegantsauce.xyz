@@ -1,0 +1,26 @@
+* {
+  /* outline: 1px red solid; */
+}
+#root {
+  display: flex;
+  justify-content: center;
+  /* background-color: blanchedalmond; */
+}
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans|Ubuntu:400,700');
+
+:focus {
+  outline: none;
+}
+::-moz-focus-inner {
+  border: 0;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button {
+  cursor: pointer;
+}
