@@ -19,8 +19,11 @@ const header = props => {
 
       <div className='header-right'>
         <Search filterTasks={ filterTasks } />
-        <button onClick={ resetFilter } className="counter-box"> { taskCount } </button>
-        <button onClick={ toggleForm } className="counter-box"> + </button>
+        <div className='header-buttons'>
+          <button onClick={ resetFilter } className="counter-box"> { taskCount } </button>
+          {/* todo: add onMouseover w/ msgs */}
+          <button onClick={ toggleForm } className="counter-box"> + </button>
+        </div>
       </div>
 
     </header>

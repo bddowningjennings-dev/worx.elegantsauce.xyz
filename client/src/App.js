@@ -17,34 +17,57 @@ class App extends Component {
   state = initializeState(this.props)
   async componentDidMount() {
     try {
-      const tasks = await fetcher.getTasks()
+      let tasks = await fetcher.getTasks()
+      tasks = tasks.sort((a,b) => {
+        let a_date = new Date(a.updatedAt)
+        let b_date = new Date(b.updatedAt)
+        return b_date - a_date
+      })
       this.setState(prevState => ({ ...prevState, tasks }))
     } catch(e) {
       this.setState(prevState => ({ ...prevState, error: e.error }))
     }
   }
+  addTask = task => this.setState(prevState => ({ 
+    ...prevState,
+    tasks: [ task, ...prevState.tasks ]
+  }))
+  filterTasks = tasks => this.setState(prevState => ({ ...prevState, tasks }))
+  removeTask = id => this.setState(prevState => ({ 
+    ...prevState,
+    tasks: prevState.tasks.filter(task => task._id !== id)
+  }))
+  updateTasks = id => {
+    let updatedTask = this.state.tasks.filter(e => e._id === id)
+    let others = this.state.tasks.filter(e => e._id !== id)
+    this.setState(prevState => ({ ...prevState, tasks: [ ...updatedTask, ...others ]}))
+  }
   toggleForm = e => {
     e && e.preventDefault()
     this.setState(prevState => ({ ...prevState, showForm: !prevState.showForm }))
   }
-  removeTask = task => {
-
-  }
-  updateTasks = tasks => alert(tasks)
-  filterTasks = tasks => {
-    this.setState(prevState => ({ ...prevState, tasks }))
-  }
 
   render() {
     const { tasks=[], error, showForm } = { ...this.state }
-    const mainProps = { showForm, tasks, removeTask: this.removeTask, updateTasks: this.updateTasks }
-    const headerProps = { taskCount: tasks.length, toggleForm: this.toggleForm, filterTasks: this.filterTasks }
+    const mainProps = {
+      showForm,
+      tasks,
+      addTask: this.addTask,
+      removeTask: this.removeTask,
+      updateTasks: this.updateTasks,
+      toggleForm: this.toggleForm,
+    }
+    const headerProps = {
+      taskCount: tasks.length,
+      toggleForm: this.toggleForm,
+      filterTasks: this.filterTasks
+    }
+
     return (
       <div className="App">
         <Header { ...headerProps } />
           {error}
         <Main { ...mainProps }/>
-        <Header { ...headerProps } />
         <Footer />
       </div>
     )

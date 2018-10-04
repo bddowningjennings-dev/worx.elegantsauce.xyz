@@ -1,41 +1,89 @@
-#main-form {
-  width: 100%;
+.Form {
+  width: 89%;
   display: flex;
   flex-direction: row;
-  align-items: center;
-  margin-bottom: 20px;
-  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  padding: 20px 30px;
   background-color: rgba(201, 231, 231, 0.87);
-  padding: 20px 0;
-  padding-left: 40px;
   border-top-left-radius: 20px;
   border-bottom-right-radius: 10px;
   box-shadow: 4px 2px 34px 0px #888888;
 }
-#main-form button#main-submit {
-  margin-left: 50px;
+.Form.hidden {
+  visibility: hidden;
+  height: 0;
+  width: 0;
+  margin-top: -30px;
 }
-.no_margin {
-  margin: -60px 0;
-  padding: 0;
-}
-textarea {
-  resize: none;
-}
-.inputs {
+.Form .form-buttons {
+  width: 25%;
+  border: none;
+  /* margin: 10px; */
+  padding: 5px 10px;
+  height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
 }
-.form-description {
+.Form .form-buttons > button {
+  width: 100%;
+  border: none;
+  margin: 10px 0;
+  padding: 8px 0;
+  border-radius: 5px;
+  background-color: rgb(228, 98, 98);
+  color: white;
+}
+.Form section.form-inputs {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.Form section.form-inputs > input, textarea {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 0.8em;
+  width: 100%;
+  margin: 2px 0;
+  margin-left: 10px;
+  border: none;
+  border-radius: 4px;
+  padding: 10px;
+}
+.Form section.form-inputs > input:focus, textarea:focus {
+  border: 1px solid rgb(228, 98, 98);
+}
+.Form section.form-inputs > textarea {
+  resize: none;
   height: 200px;
 }
-#main-form button {
-  font-size: 1.2em;
-  background-color: rgb(100, 172, 177);
-  border: none;
-  color: white;
-  border-radius: 2px;
-  margin-left: 12px;
-  padding: 3px 10px;
-  margin-bottom: 10px;
+
+
+@media only screen and (max-width : 800px) {
+
+  .Form {
+    width: 85%;
+    flex-direction: column;
+    padding: 2%;
+    margin: 0;
+    align-items: center;
+  }
+  .Form section.form-inputs {
+    width: 100%;
+    padding: 2%;
+  }
+  .Form section.form-inputs > input, textarea {
+    width: 85%;
+    margin: 5px 0;
+  }
+  .Form section.form-inputs > textarea {
+    height: 200px;
+  }
+  .Form .form-buttons {
+    width: 80%;
+  }
+  .Form .form-buttons > button {
+    margin: 5px;
+  }
 }

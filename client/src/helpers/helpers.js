@@ -1,9 +1,13 @@
 import axios from 'axios'
 
-const createJSONbody = ({ title, tags, ...prevState }) => {
+export const aux = props => props.children
+
+const createJSONbody = ({ title, tags, tags_string, description, ...prevState }) => {
+  if (tags_string) tags = tags_string
   return JSON.stringify({
     ...prevState,
     title: title || "Task Title",
+    description: description || '',
     tags: tags.length > 1 ? tags.split(',').map(tag => tag.toLowerCase().trim()) : []
   })
 }
@@ -52,6 +56,39 @@ export const fetcher = {
       return
     }
   },
+  updateTask: async state => {
+    try {
+      const { card } = { ...state }
+      const data = createJSONbody({ ...state })
+      const options = {
+        method: 'PUT',
+        url: `/api/tasks/${card._id}`,
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data
+      }
+      const { data: task } = await axios(options)
+      return task
+    } catch(e) {
+      const obj = { error: e.response.data }
+      throw obj
+    }
+  },
+  deleteTask: async id => {
+    try {
+      const options = {
+        method: 'DELETE',
+        url: `/api/tasks/${id}`,
+      }
+      const { data: task } = await axios(options)
+      return task
+    } catch(e) {
+      const obj = { error: e.response.data }
+      throw obj
+      // return []
+    }
+  },
   search: async state => {
     const { search } = { ...state }
     let inclusive = false
@@ -78,16 +115,3 @@ export const fetcher = {
   }
 }
 
-
-// fetch(URL + objToURI(searchObj), {
-//   headers: {
-//     'Content-Type': 'application/javascript'
-//   }
-// })
-// .then(data => {
-//   return data.json()
-// })
-// .then(tasks => {
-//   this.props.filterTasks(tasks)
-// })
-// .catch(err=>console.log(err))

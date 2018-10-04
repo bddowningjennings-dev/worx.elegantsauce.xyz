@@ -1,0 +1,4 @@
+.Task .description {
+  /* overflow: unset; */
+  word-wrap: break-word;
+}
