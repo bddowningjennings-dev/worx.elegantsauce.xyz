@@ -5,7 +5,7 @@ import { fetcher } from '../../helpers/helpers'
 
 const initializeState = props => {
   return {
-    search: ''
+    search: '',
   }
 }
 
@@ -23,8 +23,15 @@ class Search extends Component {
   handleSubmit = async e => {
     e && e.preventDefault()
     const { filterTasks } = { ...this.props }
+    const { search } = { ...this.state }
     try {
-      const tasks = await fetcher.search(this.state)
+      let tasks = []
+      if (!search) {
+        tasks = await fetcher.getTasks()
+      } else {
+        tasks = await fetcher.search(this.state)
+      }
+      // this.setState({ search: '' }, () => filterTasks(tasks))
       filterTasks(tasks)
     } catch(e) { console.log(e) }
   }

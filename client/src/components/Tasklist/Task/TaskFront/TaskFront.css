@@ -84,6 +84,11 @@ button.tag {
   /* width: 400px; */
 }
 
+
+.Task img {
+  max-width: 100%;
+}
+
 @media only screen and (max-width : 800px) {
   textarea.description {
     width: 80%;
@@ -104,4 +109,10 @@ button.tag {
     width: 30px;
     padding: 5px 0;
   }
+
+.Task img:hover {
+  width: 200%;
+  max-width: initial;
+  margin-left: -15%;
+}
 }

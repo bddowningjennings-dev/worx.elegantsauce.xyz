@@ -17,13 +17,8 @@ class App extends Component {
   state = initializeState(this.props)
   async componentDidMount() {
     try {
-      let tasks = await fetcher.getTasks()
-      tasks = tasks.sort((a,b) => {
-        let a_date = new Date(a.updatedAt)
-        let b_date = new Date(b.updatedAt)
-        return b_date - a_date
-      })
-      this.setState(prevState => ({ ...prevState, tasks }))
+      const tasks = await fetcher.getTasks()
+      this.filterTasks(tasks)
     } catch(e) {
       this.setState(prevState => ({ ...prevState, error: e.error }))
     }
@@ -32,7 +27,14 @@ class App extends Component {
     ...prevState,
     tasks: [ task, ...prevState.tasks ]
   }))
-  filterTasks = tasks => this.setState(prevState => ({ ...prevState, tasks }))
+  filterTasks = tasks => this.setState(prevState => {
+    tasks = tasks.sort((a,b) => {
+      let a_date = new Date(a.updatedAt)
+      let b_date = new Date(b.updatedAt)
+      return b_date - a_date
+    })
+    return { ...prevState, tasks }
+  })
   removeTask = id => this.setState(prevState => ({ 
     ...prevState,
     tasks: prevState.tasks.filter(task => task._id !== id)

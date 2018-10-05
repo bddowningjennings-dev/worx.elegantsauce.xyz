@@ -9,13 +9,18 @@ const header = props => {
   const { taskCount, toggleForm, filterTasks } = { ...props }
   const resetFilter = async () => {    
     try {
-      const tasks = await fetcher.search({ search: '.*' })
+      let tasks = await fetcher.getTasks()
+      tasks = tasks.sort((a,b) => {
+        let a_date = new Date(a.updatedAt)
+        let b_date = new Date(b.updatedAt)
+        return b_date - a_date
+      })
       filterTasks(tasks)
     } catch(e) { console.log(e) }
   }
   return (
     <header className='Header'>
-      <div className="header-left">W O R X</div>
+      <a className="header-left" href='/'><button>W O R X</button></a>
 
       <div className='header-right'>
         <Search filterTasks={ filterTasks } />
