@@ -19,7 +19,6 @@
 .Form .form-buttons {
   width: 25%;
   border: none;
-  /* margin: 10px; */
   padding: 5px 10px;
   height: 100%;
   display: flex;
@@ -33,7 +32,12 @@
   padding: 8px 0;
   border-radius: 5px;
   background-color: rgb(228, 98, 98);
+  /* background-color: rgba(228, 98, 98, 0.767); */
   color: white;
+}
+.Form .form-buttons > button:hover {
+  color: rgb(228, 220, 220);
+  background-color: rgba(228, 98, 98, 0.767);
 }
 .Form section.form-inputs {
   width: 70%;
@@ -46,7 +50,6 @@
   font-size: 0.8em;
   width: 100%;
   margin: 2px 0;
-  margin-left: 10px;
   border: none;
   border-radius: 4px;
   padding: 10px;

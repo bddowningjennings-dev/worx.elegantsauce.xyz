@@ -27,6 +27,7 @@
   justify-content: center;
   align-items: center;
   background-color: rgba(255, 255, 255, 0.884);
+  width: 45px;
   height: 45px;
   color: gray;
   border: none;
@@ -49,6 +50,8 @@
     flex-direction: column;
     width: 80%;
     padding-bottom: 20px;
+    position: initial;
+    margin-bottom: 0;
   }
   .header-left {
     margin-bottom: 10px;

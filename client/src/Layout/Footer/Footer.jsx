@@ -4,7 +4,7 @@ import './Footer.css'
 const footer = props => {
   return (
     <div className='Footer'>
-      Footer
+      <a href='http://elegantsauce.xyz'><button>elegantsauce.xyz</button></a>
     </div>
   )
 }

@@ -51,9 +51,15 @@
   padding: 5px;
   width: 80%;
 }
+.buttons button:hover {
+  background-color: rgba(149, 219, 231, 0.541);
+  color: rgb(146, 143, 143);
+}
 .buttons button.update-cancel {
   background-color: rgba(236, 210, 91, 0.795);
-
+}
+.buttons button.update-cancel:hover {
+  background-color: rgba(238, 222, 149, 0.74);
 }
 @media only screen and (max-width : 800px) {
   .task-back textarea.description {
@@ -61,5 +67,11 @@
   }
   .task-back {
     flex-direction: column;
+  }
+  .buttons {
+    margin-top: 15px;
+  }
+  .buttons button {
+    width: 100%;
   }
 }

@@ -1,5 +1,4 @@
 
-
 .Task {
   z-index: 4;
   width: 98%;
@@ -16,91 +15,4 @@
 .Task.edit {
   background-color: rgba(201, 231, 231, 0.87);
 }
-.task-top {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
 
-.top-left {
-  width: 50px;
-}
-.top-right {
-  display: flex;
-  flex-wrap: wrap;
-  width: 400px;
-}
-.top-mid {
-  width: 100%;
-  padding-left: 10px;
-}
-button.items, button.task-delete, button.task-update {
-  /* background-color: rgb(100, 172, 177); */
-  border: none;
-  color: white;
-  font-size: 0.79em;
-  border-radius: 2px;
-  margin-left: 12px;
-  padding: 2px 10px;
-  
-}
-button.task-delete {
-  background-color: rgba(255, 60, 0, 0.363);
-  border-radius: 900px;
-  width: 40px;
-  height: 40px;
-  border: none;
-  margin: 0;
-  padding: 0;
-  border-bottom-left-radius: 0;
-}
-.task-delete > img {
-  width: 25px;
-}
-button.tag {
-  background-color: #f2f229b3;
-  border-bottom-left-radius: 10px;
-  border-top-right-radius: 10px;
-  border: none;
-  color: gray;
-  margin: 2.5px;
-}
-button.title-button {
-  border:  none;
-  background-color: transparent;
-  font-size: 1.5em;
-  color: rgb(116, 110, 110);
-  border-bottom: 1px solid rgba(10, 88, 55, 0.74);
-  width: 90%;
-  max-width: 800px;
-  text-align: left;
-  overflow: scroll;
-}
-.top-right {
-  display: flex;
-  flex-wrap: wrap;
-  /* width: 400px; */
-}
-@media only screen and (max-width : 800px) {
-  textarea.description {
-    width: 80%;
-  }
-  .task-top {
-    flex-direction: column-reverse;
-  }
-  .task-top > .top-right {
-    justify-content: right;
-    width: 100%;
-    margin-bottom: 10px;
-  }
-  .task-top > .task-delete {
-    margin: 0;
-    margin-bottom: 10px;
-    justify-content: right;
-    width: 100%;
-    border-radius: 20px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    padding: 5px 0;
-  }
-}
