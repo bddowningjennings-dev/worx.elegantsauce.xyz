@@ -3,6 +3,7 @@
 
 <img style=";" src="./assets/worx.png">
 
+Hosted at: [worx.elegantsauce.xyz](http://worx.elegantsauce.xyz)
 ## Note Resource Organizing/Note Taking Application
 
   - Markdown compiler for card body
