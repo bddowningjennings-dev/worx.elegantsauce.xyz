@@ -11,9 +11,11 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(express.static(__dirname + '/build'))
 
+app.get('/', (req, res) => res.sendFile(__dirname + '/build/index.html'))
+
 require('./server/config/routes')(app)
 require('./server/config/mongoose')(DATABASE)
 
-app.get('*', (req, res) => res.sendFile(__dirname + '/build/index.html'))
+app.get('/*', (req, res) => res.redirect('/'))
 
 app.listen(PORT, ()=>console.log(`(server): listening on port ${PORT}...`))
